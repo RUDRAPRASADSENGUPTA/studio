@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Audio Page</title>
+  <link rel="stylesheet" href="style.css"> <!-- Link to your CSS -->
+</head>
+<body>
+  <h1>Listen to Audio</h1>
+
+  <audio controls>
+    <source src="audio/sample.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <!-- Optional: Upload form (local only; won't store the file on GitHub) -->
+  <h2>Upload Audio File</h2>
+  <input type="file" accept="audio/*" onchange="playAudio(event)">
+  <audio id="uploadedAudio" controls></audio>
+
+  <script>
+    function playAudio(event) {
+      const audio = document.getElementById('uploadedAudio');
+      audio.src = URL.createObjectURL(event.target.files[0]);
+      audio.load();
+      audio.play();
+    }
+  </script>
+</body>
+</html>
